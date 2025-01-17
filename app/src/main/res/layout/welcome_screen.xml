@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingHorizontal="16dp"
+    android:paddingVertical="20dp">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        tools:ignore="UselessParent">
+
+        <ImageView
+            android:id="@+id/iv_welcome_screen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/welcome_screen"
+            android:src="@drawable/welcome_screen" />
+
+        <TextView
+            android:id="@+id/app_names"
+            style="@style/text_app_title"
+            android:layout_below="@id/iv_welcome_screen"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="32dp"
+            android:text="@string/app_name" />
+
+        <TextView
+            android:id="@+id/test"
+            style="@style/text_app_description"
+            android:layout_below="@+id/app_names"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="8dp"
+            android:text="@string/app_description" />
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/btn_login"
+        style="@style/button_primary"
+        android:layout_above="@+id/btn_register"
+        android:layout_marginBottom="12dp"
+        android:text="@string/log_in" />
+
+    <Button
+        android:id="@+id/btn_register"
+        style="@style/button_secondary"
+        android:layout_alignParentBottom="true"
+        android:text="@string/register" />
+</RelativeLayout>
