@@ -37,4 +37,8 @@
     <string name="registration_success_caption_3">Habit Squad!</string>
     <string name="registration_success_description">Your journey to better habits starts right now.</string>
     <string name="my_profile">My Profile</string>
+    <string name="log_out">Log out</string>
+    <string name="app_version">Habit Tracker v0.0.1</string>
+    <string name="dummy_email">johndoe@gmail.com</string>
+    <string name="dummy_name">John Doe</string>
 </resources>

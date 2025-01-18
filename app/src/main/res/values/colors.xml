@@ -11,4 +11,5 @@
     <color name="secondary">#FFE6A15B</color>
     <color name="tertiary">#FFFCECC8</color>
     <color name="primary_placeholder">#FF745C5A</color>
+    <color name="danger">#FFFF6262</color>
 </resources>
