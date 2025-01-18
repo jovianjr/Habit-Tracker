@@ -48,20 +48,6 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
-//    signingConfigs {
-//        getByName("debug") {
-//            keyAlias = "debug"
-//            keyPassword = "my debug key password"
-//            storeFile = file("/home/miles/keystore.jks")
-//            storePassword = "my keystore password"
-//        }
-//        create("release") {
-//            keyAlias = KEY_ALIAS
-//            keyPassword = KEYSTORE_PASSWORD
-//            storeFile = file("habittracker.keystore")
-//            storePassword = KEY_PASSWORD
-//        }
-//    }
 }
 
 dependencies {
