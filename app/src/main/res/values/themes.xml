@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Theme.HabitTracker" parent="Theme.MaterialComponents.DayNight.NoActionBar" />
+    <style name="Theme.HabitTracker" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorSecondary">@color/secondary</item>
+        <item name="colorAccent">@color/tertiary</item>
+        <item name="colorSurface">@color/tertiary</item>
+        <item name="colorOutline">@color/primary</item>
+        <item name="rippleColor">@color/secondary</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorOnSecondary">@color/white</item>
+        <item name="android:fontFamily">@font/poppins_regular</item>
+        <item name="android:textColor">@color/primary</item>
+        <item name="android:buttonTint">@color/secondary</item>
+    </style>
 <!--    <style name="Theme.HabitTracker" parent="android:Theme.Material.Light.NoActionBar" />-->
 
     <style name="text_app_title">
@@ -67,26 +79,30 @@
         <item name="android:textColor">@color/primary</item>
     </style>
 
-    <style name="button_primary">
+    <style name="button_primary" parent="Widget.MaterialComponents.Button">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:background">@drawable/rounded_button_primary</item>
         <item name="android:clickable">true</item>
         <item name="android:fontFamily">@font/poppins_semi_bold</item>
-        <item name="android:paddingVertical">4dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:paddingVertical">8dp</item>
         <item name="android:textSize">16sp</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:textAllCaps">false</item>
     </style>
 
-    <style name="button_secondary">
+    <style name="button_secondary" parent="Widget.MaterialComponents.Button.OutlinedButton">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:background">@drawable/rounded_button_secondary</item>
         <item name="android:fontFamily">@font/poppins_semi_bold</item>
-        <item name="android:paddingVertical">4dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:paddingVertical">8dp</item>
         <item name="android:textSize">16sp</item>
         <item name="android:textColor">@color/primary</item>
+        <item name="strokeColor">@color/primary</item>
+        <item name="strokeWidth">1dp</item>
     </style>
 
     <style name="edit_text_primary">

@@ -25,6 +25,7 @@ class MainActivity : ComponentActivity() {
                 Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
                     setContentView(R.layout.dashboard)
                     generateRecycleViewTodo()
+                    generateRecycleViewCompleted()
                 }
             }
         }
@@ -32,10 +33,24 @@ class MainActivity : ComponentActivity() {
 
     fun generateRecycleViewTodo(){
         // Data untuk RecyclerView
-        val data = List(50) { "Item ${it + 1}" }
+        val data = List(2) { "Item ${it + 1}" }
 
         // Temukan RecyclerView di layout
         val recyclerView: RecyclerView = findViewById(R.id.rv_data_todo)
+
+        // Atur layout manager
+        recyclerView.layoutManager = LinearLayoutManager(this)
+
+        // Atur adapter
+        recyclerView.adapter = MyAdapter(data)
+    }
+
+    fun generateRecycleViewCompleted(){
+        // Data untuk RecyclerView
+        val data = List(1) { "Item ${it + 1}" }
+
+        // Temukan RecyclerView di layout
+        val recyclerView: RecyclerView = findViewById(R.id.rv_data_completed)
 
         // Atur layout manager
         recyclerView.layoutManager = LinearLayoutManager(this)

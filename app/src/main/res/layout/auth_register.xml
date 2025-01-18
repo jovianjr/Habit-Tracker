@@ -162,6 +162,7 @@
         android:id="@+id/rl_step_one"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_above="@id/btn_next_step"
         android:layout_below="@id/rl_step_summary"
         android:layout_marginTop="24dp"
         android:visibility="visible">
@@ -250,32 +251,43 @@
         <WebView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_above="@id/cb_agree_tos"
+            android:layout_above="@id/ll_agree_tos"
             android:layout_below="@id/tv_tos"
             android:layout_marginBottom="8dp"
             android:background="@color/tertiary"
             android:padding="8dp"
             android:paddingVertical="12dp" />
 
-        <CheckBox
-            android:id="@+id/cb_agree_tos"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/ll_agree_tos"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true" />
+            android:layout_alignParentBottom="true"
+            android:gravity="center"
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/tv_agree_tos"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@id/cb_agree_tos"
-            android:layout_toEndOf="@id/cb_agree_tos"
-            android:text="@string/i_have_read_and_agree_to_the_terms_of_service_and_privacy_policy" />
+            <com.google.android.material.checkbox.MaterialCheckBox
+                android:id="@+id/cb_agree_tos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <Space
+                android:layout_width="4dp"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/tv_agree_tos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/i_have_read_and_agree_to_the_terms_of_service_and_privacy_policy" />
+        </LinearLayout>
     </RelativeLayout>
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_next_step"
         style="@style/button_primary"
         android:layout_alignParentBottom="true"
+        android:layout_marginTop="16dp"
         android:text="@string/next_step" />
 
 </RelativeLayout>

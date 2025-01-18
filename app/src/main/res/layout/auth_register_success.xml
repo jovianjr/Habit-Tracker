@@ -60,7 +60,7 @@
     </LinearLayout>
 
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_next_step"
         style="@style/button_primary"
         android:layout_alignParentBottom="true"

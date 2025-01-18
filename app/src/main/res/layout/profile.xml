@@ -67,15 +67,16 @@
         android:layout_centerHorizontal="true"
         android:text="@string/dummy_email" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_logout"
         style="@style/button_secondary"
         android:layout_above="@id/tv_app_version"
         android:layout_marginBottom="16dp"
-        android:background="@drawable/rounded_button_danger"
         android:text="@string/log_out"
         android:textAllCaps="false"
-        android:textColor="@color/danger" />
+        android:textColor="@color/danger"
+        app:strokeColor="@color/danger"
+        app:rippleColor="@color/danger_ripple"/>
 
     <TextView
         android:id="@+id/tv_app_version"
