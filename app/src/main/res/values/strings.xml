@@ -41,4 +41,13 @@
     <string name="app_version">Habit Tracker v0.0.1</string>
     <string name="dummy_email">johndoe@gmail.com</string>
     <string name="dummy_name">John Doe</string>
+    <string name="today">Today</string>
+    <string name="today_placeholder">Wednesday, 16 February 2020</string>
+    <string name="your_progress_today">Your Progress Today</string>
+    <string name="your_progress_placeholder">33%</string>
+    <string name="habits_to_do_today">Habits To Do Today</string>
+    <string name="completed_habits_today">Completed Habits Today</string>
+    <string name="lorem_ipsum">Lorem Ipsum</string>
+    <string name="time_placeholder">08:00</string>
+    <string name="habit_placeholder">Have a breakfast</string>
 </resources>
