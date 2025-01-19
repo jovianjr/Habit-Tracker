@@ -50,4 +50,8 @@
     <string name="lorem_ipsum">Lorem Ipsum</string>
     <string name="time_placeholder">08:00</string>
     <string name="habit_placeholder">Have a breakfast</string>
+    <string name="habit_list_heading">My Habit List</string>
+    <string name="habit_list_description">Adjust your habit list to stay on track and make them work better for you</string>
+    <string name="save_changes">Save Changes</string>
+    <string name="add_new_habit">Add New Habit ....</string>
 </resources>

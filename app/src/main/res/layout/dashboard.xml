@@ -52,15 +52,30 @@
             android:layout_marginTop="24dp"
             android:orientation="horizontal">
 
-            <ImageView
+            <FrameLayout
                 android:layout_width="0dp"
-                android:layout_height="fill_parent"
-                android:layout_weight="1"
-                android:contentDescription="@string/your_progress_today"
-                android:src="@drawable/img_profile_placeholder" />
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+
+                <com.google.android.material.progressindicator.CircularProgressIndicator
+                    android:id="@+id/cpi_your_progress_today"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:max="100"
+                    android:progress="33"
+                    android:tooltipText="@string/your_progress_today"
+                    app:indicatorColor="@color/secondary"
+                    app:indicatorSize="120dp"
+                    app:trackCornerRadius="16dp"
+                    app:trackColor="@color/tertiary"
+                    app:trackThickness="20dp" />
+            </FrameLayout>
+
 
             <Space
-                android:layout_width="24dp"
+                android:layout_width="4dp"
                 android:layout_height="match_parent" />
 
             <RelativeLayout
@@ -72,6 +87,7 @@
                     android:id="@+id/tv_your_progress"
                     style="@style/text_heading"
                     android:layout_marginTop="24dp"
+                    android:layout_marginBottom="-16dp"
                     android:text="@string/your_progress_today" />
 
                 <TextView
@@ -79,6 +95,7 @@
                     style="@style/text_heading"
                     android:layout_below="@id/tv_your_progress"
                     android:text="@string/your_progress_placeholder"
+                    android:textColor="@color/secondary"
                     android:textSize="48sp" />
             </RelativeLayout>
 
