@@ -2,3 +2,5 @@
 /.gradle
 /.gradle
 /.idea
+/.idea
+app/google-services.json

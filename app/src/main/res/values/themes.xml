@@ -2,8 +2,9 @@
 <resources>
     <style name="Theme.HabitTracker" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryDark">@color/primary</item>
         <item name="colorSecondary">@color/secondary</item>
-        <item name="colorAccent">@color/tertiary</item>
+        <item name="colorAccent">@color/secondary</item>
         <item name="colorSurface">@color/tertiary</item>
         <item name="colorOutline">@color/primary</item>
         <item name="rippleColor">@color/secondary</item>
@@ -12,6 +13,8 @@
         <item name="android:fontFamily">@font/poppins_regular</item>
         <item name="android:textColor">@color/primary</item>
         <item name="android:buttonTint">@color/secondary</item>
+        <item name="android:statusBarColor">@color/white</item>
+        <item name="android:windowLightStatusBar">true</item>
     </style>
 <!--    <style name="Theme.HabitTracker" parent="android:Theme.Material.Light.NoActionBar" />-->
 
