@@ -1,4 +1,4 @@
-package com.example.habittracker
+package com.example.habittracker.adapter
 
 import android.graphics.Color
 import android.view.LayoutInflater
@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.habittracker.R
 import com.google.android.material.card.MaterialCardView
 import kotlin.random.Random
 
