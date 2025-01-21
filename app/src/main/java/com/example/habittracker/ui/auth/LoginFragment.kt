@@ -2,7 +2,6 @@ package com.example.habittracker.ui.auth
 
 import android.app.AlertDialog
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.habittracker.databinding.FragmentAuthLoginBinding
 import com.example.habittracker.utils.UiState
 import com.example.habittracker.utils.Validator
+import com.example.habittracker.viewmodel.AuthViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

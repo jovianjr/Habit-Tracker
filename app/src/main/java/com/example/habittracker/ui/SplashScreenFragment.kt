@@ -5,31 +5,34 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.habittracker.R
+import com.example.habittracker.databinding.FragmentSplashScreenBinding
+import com.example.habittracker.viewmodel.AuthViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class SplashScreenFragment : Fragment() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
+    private lateinit var binding: FragmentSplashScreenBinding
+    private val authViewModel: AuthViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_splash_screen, container, false)
+    ): View {
+        binding = FragmentSplashScreenBinding.inflate(layoutInflater)
+        return binding.root
     }
 
     override fun onStart() {
         super.onStart()
-        val result = false
-        if (result) {
-            findNavController().navigate(R.id.action_splashScreenFragment_to_dashboardFragment_navigation)
-        } else {
-            findNavController().navigate(R.id.action_splashScreenFragment_to_welcomeScreenFragment_navigation)
+        authViewModel.session { user ->
+            if (user != null) {
+                findNavController().navigate(R.id.action_splashScreenFragment_to_dashboardFragment_navigation)
+            } else {
+                findNavController().navigate(R.id.action_splashScreenFragment_to_welcomeScreenFragment_navigation)
+            }
         }
     }
 }

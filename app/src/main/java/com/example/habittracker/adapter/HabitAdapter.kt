@@ -1,5 +1,6 @@
 package com.example.habittracker.adapter
 
+import android.content.res.ColorStateList
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
@@ -8,9 +9,9 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.habittracker.R
 import com.google.android.material.card.MaterialCardView
-import kotlin.random.Random
 
-class MyAdapter(private val items: List<String>) : RecyclerView.Adapter<MyAdapter.ViewHolder>() {
+class HabitAdapter(private val items: List<String>) :
+    RecyclerView.Adapter<HabitAdapter.ViewHolder>() {
 
     // ViewHolder untuk item RecyclerView
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -20,7 +21,8 @@ class MyAdapter(private val items: List<String>) : RecyclerView.Adapter<MyAdapte
 
     // Inflate layout untuk setiap item
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.rv_habit_card, parent, false)
+        val view =
+            LayoutInflater.from(parent.context).inflate(R.layout.rv_habit_card, parent, false)
         return ViewHolder(view)
     }
 
@@ -28,14 +30,18 @@ class MyAdapter(private val items: List<String>) : RecyclerView.Adapter<MyAdapte
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.textView.text = items[position]
 
-// Generate random color
-        val randomBackgroundColor = Color.rgb(
-            Random.nextInt(256),  // Random red value
-            Random.nextInt(256),  // Random green value
-            Random.nextInt(256)   // Random blue value
+        val colorPalette = listOf(
+            Color.parseColor("#FFFEF3C7"),
+            Color.parseColor("#FFDBEAFE"),
+            Color.parseColor("#FFF4F4F5"),
+            Color.parseColor("#FFEDE9FE"),
+            Color.parseColor("#FFFFE4E6"),
         )
-        holder.materialCardView.setCardBackgroundColor(randomBackgroundColor)
 
+        val randomColor = colorPalette.random()
+        val randomBackgroundColor = ColorStateList.valueOf(randomColor)
+
+        holder.materialCardView.setCardBackgroundColor(randomBackgroundColor)
     }
 
     // Total jumlah item

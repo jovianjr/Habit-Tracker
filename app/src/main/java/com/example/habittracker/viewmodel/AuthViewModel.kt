@@ -1,4 +1,4 @@
-package com.example.habittracker.ui.auth
+package com.example.habittracker.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

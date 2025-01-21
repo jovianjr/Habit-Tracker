@@ -41,6 +41,16 @@
         <action
             android:id="@+id/action_dashboardFragment_to_profileFragment_navigation"
             app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_habitSettingsFragment_navigation"
+            app:destination="@id/habitSettingsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/habitSettingsFragment"
+        android:name="com.example.habittracker.ui.HabitSettingsFragment">
+        <action
+            android:id="@+id/action_habitSettingsFragment_to_dashboardFragment_navigation"
+            app:destination="@id/dashboardFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
@@ -48,6 +58,9 @@
         <action
             android:id="@+id/action_profileFragment_to_welcomeScreenFragment_navigation"
             app:destination="@id/welcomeScreenFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_dashboardFragment_navigation"
+            app:destination="@id/dashboardFragment" />
 
     </fragment>
 

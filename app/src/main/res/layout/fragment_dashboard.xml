@@ -68,8 +68,8 @@
                     android:tooltipText="@string/your_progress_today"
                     app:indicatorColor="@color/secondary"
                     app:indicatorSize="120dp"
-                    app:trackCornerRadius="16dp"
                     app:trackColor="@color/tertiary"
+                    app:trackCornerRadius="16dp"
                     app:trackThickness="20dp" />
             </FrameLayout>
 
@@ -146,6 +146,7 @@
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
                 app:cardCornerRadius="8dp"
                 app:strokeColor="@color/primary"
                 app:strokeWidth="1dp">
@@ -170,6 +171,6 @@
             android:id="@+id/btn_habit_settings"
             style="@style/button_primary"
             android:layout_marginTop="32dp"
-            android:text="Habits Preferences" />
+            android:text="@string/change_habits" />
     </LinearLayout>
 </ScrollView>

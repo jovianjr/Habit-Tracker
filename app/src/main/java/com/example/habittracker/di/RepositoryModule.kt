@@ -2,7 +2,10 @@ package com.example.habittracker.di
 
 import com.example.habittracker.data.repository.AuthRepository
 import com.example.habittracker.data.repository.AuthRepositoryImp
+import com.example.habittracker.data.repository.HabitRepository
+import com.example.habittracker.data.repository.HabitRepositoryImp
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.gson.Gson
 import dagger.Module
 import dagger.Provides
@@ -16,7 +19,20 @@ import javax.inject.Singleton
 object RepositoryModule {
     @Provides
     @Singleton
-    fun provideAuthRepository(auth: FirebaseAuth, gson: Gson): AuthRepository{
-        return AuthRepositoryImp(auth, gson)
+    fun provideAuthRepository(
+        auth: FirebaseAuth,
+        firestore: FirebaseFirestore,
+        gson: Gson
+    ): AuthRepository {
+        return AuthRepositoryImp(auth, firestore, gson)
+    }
+
+    @Provides
+    @Singleton
+    fun provideHabitRepository(
+        auth: FirebaseAuth,
+        firestore: FirebaseFirestore
+    ): HabitRepository {
+        return HabitRepositoryImp(auth, firestore)
     }
 }
