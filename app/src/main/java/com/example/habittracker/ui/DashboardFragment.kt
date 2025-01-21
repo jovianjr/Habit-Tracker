@@ -70,12 +70,19 @@ class DashboardFragment : Fragment() {
         habitViewModel.habitsToday.observe(viewLifecycleOwner) { state ->
             when (state) {
                 is UiState.Loading -> {
+                    binding.llSkeletonDataTodo.visibility = View.VISIBLE
+                    binding.llSkeletonDataCompleted.visibility = View.VISIBLE
                 }
 
                 is UiState.Failure -> {
+                    binding.llSkeletonDataTodo.visibility = View.GONE
+                    binding.llSkeletonDataCompleted.visibility = View.GONE
                 }
 
                 is UiState.Success -> {
+                    binding.llSkeletonDataTodo.visibility = View.GONE
+                    binding.llSkeletonDataCompleted.visibility = View.GONE
+
                     generateRecycleViewCompleted(state.data)
 
                     // generate to do list

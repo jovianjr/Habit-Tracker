@@ -103,6 +103,9 @@ dependencies {
 
     // Gson
     implementation("com.google.code.gson:gson:2.10.1")
+
+    // Skeleton
+    implementation("com.github.skydoves:androidveil:1.1.4")
 }
 
 // Allow references to generated code

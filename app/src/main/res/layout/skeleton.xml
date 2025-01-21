@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.skydoves.androidveil.VeilLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="16dp"
+    app:veilLayout_baseAlpha="0.6"
+    app:veilLayout_baseColor="#e2e8f0"
+    app:veilLayout_dropOff="0.5"
+    app:veilLayout_highlightAlpha="0.75"
+    app:veilLayout_highlightColor="#e2e8f0"
+    app:veilLayout_radius="8dp"
+    app:veilLayout_shimmerEnable="true"
+    app:veilLayout_veiled="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/lorem_ipsum_dolor_sit_amet"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+    </LinearLayout>
+</com.skydoves.androidveil.VeilLayout>

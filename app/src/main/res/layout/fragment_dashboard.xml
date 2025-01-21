@@ -64,7 +64,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:max="100"
-                    android:progress="33"
+                    android:progress="5"
                     android:tooltipText="@string/your_progress_today"
                     app:indicatorColor="@color/secondary"
                     app:indicatorSize="120dp"
@@ -124,6 +124,20 @@
                 android:layout_height="wrap_content"
                 tools:itemCount="3"
                 tools:listitem="@layout/rv_habit_card" />
+
+            <LinearLayout
+                android:id="@+id/ll_skeleton_data_todo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="visible">
+
+                <include layout="@layout/skeleton" />
+
+                <include layout="@layout/skeleton" />
+
+                <include layout="@layout/skeleton" />
+            </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
@@ -151,14 +165,32 @@
                 app:strokeColor="@color/primary"
                 app:strokeWidth="1dp">
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rv_data_completed"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingHorizontal="16dp"
-                    android:paddingTop="12dp"
-                    tools:itemCount="1"
-                    tools:listitem="@layout/rv_habit_card_completed" />
+                    android:orientation="vertical">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_data_completed"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingHorizontal="16dp"
+                        android:paddingTop="12dp"
+                        tools:itemCount="1"
+                        tools:listitem="@layout/rv_habit_card_completed" />
+
+                    <LinearLayout
+                        android:id="@+id/ll_skeleton_data_completed"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="16dp"
+                        android:orientation="vertical">
+
+                        <include layout="@layout/skeleton" />
+
+                        <include layout="@layout/skeleton" />
+                    </LinearLayout>
+                </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
         </LinearLayout>
 
