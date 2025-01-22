@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_splashScreenFragment_to_dashboardFragment_navigation"
             app:destination="@id/dashboardFragment" />
+        <action
+            android:id="@+id/action_splashScreenFragment_to_dashboardNoDataFragment_navigation"
+            app:destination="@id/dashboardNoDataFragment" />
     </fragment>
     <fragment
         android:id="@+id/welcomeScreenFragment"
@@ -26,6 +29,9 @@
         <action
             android:id="@+id/action_welcomeScreenFragment_to_dashboardFragment_navigation"
             app:destination="@id/dashboardFragment" />
+        <action
+            android:id="@+id/action_welcomeScreenFragment_to_dashboardNoDataFragment_navigation"
+            app:destination="@id/dashboardNoDataFragment" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -44,6 +50,9 @@
         <action
             android:id="@+id/action_dashboardFragment_to_habitSettingsFragment_navigation"
             app:destination="@id/habitSettingsFragment" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_dashboardNoDataFragment_navigation"
+            app:destination="@id/dashboardNoDataFragment" />
     </fragment>
     <fragment
         android:id="@+id/habitSettingsFragment"
@@ -51,6 +60,9 @@
         <action
             android:id="@+id/action_habitSettingsFragment_to_dashboardFragment_navigation"
             app:destination="@id/dashboardFragment" />
+        <action
+            android:id="@+id/action_habitSettingsFragment_to_dashboardNoDataFragment_navigation"
+            app:destination="@id/dashboardNoDataFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
@@ -62,6 +74,13 @@
             android:id="@+id/action_profileFragment_to_dashboardFragment_navigation"
             app:destination="@id/dashboardFragment" />
 
+    </fragment>
+    <fragment
+        android:id="@+id/dashboardNoDataFragment"
+        android:name="com.example.habittracker.ui.DashboardNoDataFragment">
+        <action
+            android:id="@+id/action_dashboardNoDataFragment_to_habitSettingsFragment_navigation"
+            app:destination="@id/habitSettingsFragment" />
     </fragment>
 
 

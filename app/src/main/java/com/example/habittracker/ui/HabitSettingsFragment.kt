@@ -10,12 +10,14 @@ import com.example.habittracker.R
 import com.example.habittracker.databinding.FragmentHabitSettingsBinding
 
 class HabitSettingsFragment : Fragment() {
+    private lateinit var myHabitsOriginal: List<String>
     private lateinit var binding: FragmentHabitSettingsBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
+        myHabitsOriginal = arguments?.getStringArrayList("myHabits") ?: emptyList()
         binding = FragmentHabitSettingsBinding.inflate(layoutInflater)
         return binding.root
     }
@@ -24,7 +26,11 @@ class HabitSettingsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.ivBack.setOnClickListener {
-            findNavController().navigate(R.id.action_habitSettingsFragment_to_dashboardFragment_navigation)
+            if (myHabitsOriginal.isEmpty()) {
+                findNavController().navigate(R.id.action_habitSettingsFragment_to_dashboardNoDataFragment_navigation)
+            } else {
+                findNavController().navigate(R.id.action_habitSettingsFragment_to_dashboardFragment_navigation)
+            }
         }
     }
 }

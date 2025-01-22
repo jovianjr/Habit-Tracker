@@ -5,5 +5,5 @@ data class User(
     val name: String? = "",
     val email: String? = "",
     val profileImage: String? = "",
-    val habits: List<String?>? = emptyList(),
+    val habits: List<String>? = emptyList(),
 )

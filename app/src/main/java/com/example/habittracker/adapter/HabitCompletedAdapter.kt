@@ -27,7 +27,7 @@ class HabitCompletedAdapter(private val items: List<Habit>) :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.tvHabitName.text = items[position].name
-        holder.tvHabitTime.text = items[position].updated_at
+        holder.tvHabitTime.text = items[position].updatedAt
     }
 
     override fun getItemCount(): Int = items.size

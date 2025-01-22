@@ -1,5 +1,6 @@
 package com.example.habittracker.ui
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +13,7 @@ import com.example.habittracker.databinding.FragmentSplashScreenBinding
 import com.example.habittracker.viewmodel.AuthViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
+@SuppressLint("CustomSplashScreen")
 @AndroidEntryPoint
 class SplashScreenFragment : Fragment() {
     private lateinit var binding: FragmentSplashScreenBinding
@@ -29,7 +31,12 @@ class SplashScreenFragment : Fragment() {
         super.onStart()
         authViewModel.session { user ->
             if (user != null) {
-                findNavController().navigate(R.id.action_splashScreenFragment_to_dashboardFragment_navigation)
+                val myHabits: List<String> = user.habits ?: emptyList()
+                if (myHabits.isEmpty()) {
+                    findNavController().navigate(R.id.action_splashScreenFragment_to_dashboardNoDataFragment_navigation)
+                } else {
+                    findNavController().navigate(R.id.action_splashScreenFragment_to_dashboardFragment_navigation)
+                }
             } else {
                 findNavController().navigate(R.id.action_splashScreenFragment_to_welcomeScreenFragment_navigation)
             }

@@ -29,8 +29,13 @@ class WelcomeScreenFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel.session { user ->
-            if (user != null){
-                findNavController().navigate(R.id.action_welcomeScreenFragment_to_dashboardFragment_navigation)
+            if (user != null) {
+                val myHabits: List<String> = user.habits ?: emptyList()
+                if (myHabits.isEmpty()) {
+                    findNavController().navigate(R.id.action_welcomeScreenFragment_to_dashboardNoDataFragment_navigation)
+                } else {
+                    findNavController().navigate(R.id.action_welcomeScreenFragment_to_dashboardFragment_navigation)
+                }
             }
         }
 
