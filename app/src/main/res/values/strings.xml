@@ -62,4 +62,9 @@
     <string name="no_data_habit_2">Let’s add one and get going!</string>
     <string name="no_data_habit">No data habit</string>
     <string name="add_habit">Add Habit</string>
+    <string name="cancel">Cancel</string>
+    <string name="ok">OK</string>
+    <string name="complete_the_habit">Complete the Habit</string>
+    <string name="complete_the_habit_description">You\'re about to mark the habit as complete.</string>
+    <string name="caution_this_action_cannot_be_undone">This action cannot be undone.</string>
 </resources>

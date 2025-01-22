@@ -7,6 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.habittracker.R
 import com.example.habittracker.data.model.Habit
+import com.example.habittracker.shared.utils.formatDate
 
 class HabitCompletedAdapter(private val items: List<Habit>) :
     RecyclerView.Adapter<HabitCompletedAdapter.ViewHolder>() {
@@ -21,13 +22,17 @@ class HabitCompletedAdapter(private val items: List<Habit>) :
         viewType: Int
     ): ViewHolder {
         val view =
-            LayoutInflater.from(parent.context).inflate(R.layout.rv_habit_card_completed, parent, false)
+            LayoutInflater.from(parent.context)
+                .inflate(R.layout.rv_habit_card_completed, parent, false)
         return ViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.tvHabitName.text = items[position].name
-        holder.tvHabitTime.text = items[position].updatedAt
+
+        if (items[position].updatedAt != null) {
+            holder.tvHabitTime.text = formatDate(items[position].updatedAt!!.toDate(), "HH:mm")
+        }
     }
 
     override fun getItemCount(): Int = items.size

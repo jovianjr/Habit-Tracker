@@ -8,9 +8,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.example.habittracker.R
 import com.example.habittracker.databinding.FragmentAuthLoginBinding
-import com.example.habittracker.utils.UiState
-import com.example.habittracker.utils.Validator
+import com.example.habittracker.shared.utils.UiState
+import com.example.habittracker.shared.utils.Validator
 import com.example.habittracker.viewmodel.AuthViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -19,14 +20,10 @@ class LoginFragment : Fragment() {
     private lateinit var binding: FragmentAuthLoginBinding
     private val viewModel: AuthViewModel by viewModels()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentAuthLoginBinding.inflate(layoutInflater)
         return binding.root
     }
@@ -106,7 +103,7 @@ class LoginFragment : Fragment() {
                 is UiState.Success -> {
                     binding.tilEmail.isEnabled = true
                     binding.tilPassword.isEnabled = true
-                    findNavController().navigateUp()
+                    findNavController().navigate(R.id.action_loginFragment_to_dashboardFragment_navigation)
                 }
             }
         }

@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.habittracker.data.model.User
 import com.example.habittracker.data.repository.AuthRepository
-import com.example.habittracker.utils.UiState
+import com.example.habittracker.shared.utils.UiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -31,11 +31,11 @@ class AuthViewModel @Inject constructor(
         }
     }
 
-    fun session(result: (User?) -> Unit){
+    fun session(result: (User?) -> Unit) {
         repository.session(result)
     }
 
-    fun logout(result: () -> Unit){
+    fun logout(result: () -> Unit) {
         repository.logout(result)
     }
 }

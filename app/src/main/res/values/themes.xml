@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <style name="Theme.HabitTracker" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="colorPrimary">@color/primary</item>
         <item name="colorPrimaryDark">@color/primary</item>
@@ -15,8 +16,16 @@
         <item name="android:buttonTint">@color/secondary</item>
         <item name="android:statusBarColor">@color/white</item>
         <item name="android:windowLightStatusBar">true</item>
+        <item name="android:textColorPrimary">@color/primary</item>
+        <item name="android:textColorSecondary">@color/primary</item>
     </style>
-<!--    <style name="Theme.HabitTracker" parent="android:Theme.Material.Light.NoActionBar" />-->
+    <!--    <style name="Theme.HabitTracker" parent="android:Theme.Material.Light.NoActionBar" />-->
+
+    <style name="TransparentDialogTheme" parent="Theme.AppCompat.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
 
     <style name="text_app_title">
         <item name="android:layout_width">wrap_content</item>
@@ -90,9 +99,11 @@
         <item name="android:insetTop">0dp</item>
         <item name="android:insetBottom">0dp</item>
         <item name="android:paddingVertical">8dp</item>
-        <item name="android:textSize">16sp</item>
-        <item name="android:textColor">@color/white</item>
         <item name="android:textAllCaps">false</item>
+        <item name="android:textColor">@color/button_primary_text</item>
+        <item name="android:textSize">16sp</item>
+        <item name="backgroundTint">@color/button_primary</item>
+        <item name="textAllCaps">false</item>
     </style>
 
     <style name="button_secondary" parent="Widget.MaterialComponents.Button.OutlinedButton">
@@ -102,10 +113,11 @@
         <item name="android:insetTop">0dp</item>
         <item name="android:insetBottom">0dp</item>
         <item name="android:paddingVertical">8dp</item>
+        <item name="android:textColor">@color/button_secondary_text</item>
         <item name="android:textSize">16sp</item>
-        <item name="android:textColor">@color/primary</item>
-        <item name="strokeColor">@color/primary</item>
+        <item name="strokeColor">@color/button_secondary_stroke</item>
         <item name="strokeWidth">1dp</item>
+        <item name="textAllCaps">false</item>
     </style>
 
     <style name="edit_text_primary">

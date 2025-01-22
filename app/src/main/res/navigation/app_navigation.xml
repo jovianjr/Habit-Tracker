@@ -36,14 +36,16 @@
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.example.habittracker.ui.auth.LoginFragment">
-
+        <action
+            android:id="@+id/action_loginFragment_to_dashboardFragment_navigation"
+            app:destination="@id/dashboardFragment" />
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
         android:name="com.example.habittracker.ui.auth.RegisterFragment" />
     <fragment
         android:id="@+id/dashboardFragment"
-        android:name="com.example.habittracker.ui.DashboardFragment">
+        android:name="com.example.habittracker.ui.dashboard.DashboardFragment">
         <action
             android:id="@+id/action_dashboardFragment_to_profileFragment_navigation"
             app:destination="@id/profileFragment" />
@@ -77,7 +79,7 @@
     </fragment>
     <fragment
         android:id="@+id/dashboardNoDataFragment"
-        android:name="com.example.habittracker.ui.DashboardNoDataFragment">
+        android:name="com.example.habittracker.ui.dashboard.DashboardNoDataFragment">
         <action
             android:id="@+id/action_dashboardNoDataFragment_to_habitSettingsFragment_navigation"
             app:destination="@id/habitSettingsFragment" />

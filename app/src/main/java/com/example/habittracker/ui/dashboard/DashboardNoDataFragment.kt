@@ -1,4 +1,4 @@
-package com.example.habittracker.ui
+package com.example.habittracker.ui.dashboard
 
 import android.os.Bundle
 import android.view.LayoutInflater

@@ -1,17 +1,14 @@
 package com.example.habittracker.data.repository
 
-import android.util.Log
 import com.example.habittracker.data.model.User
-import com.example.habittracker.utils.FireStoreCollection
-import com.example.habittracker.utils.UiState
+import com.example.habittracker.shared.utils.FireStoreCollection
+import com.example.habittracker.shared.utils.UiState
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.gson.Gson
 
 class AuthRepositoryImp(
     private val auth: FirebaseAuth,
     private val firestore: FirebaseFirestore,
-    private val gson: Gson
 ) : AuthRepository {
     override fun loginEmailPassword(
         email: String,
@@ -48,7 +45,8 @@ class AuthRepositoryImp(
                         uid = res?.uid ?: user.uid,
                         name = res?.name ?: user.displayName,
                         email = res?.email ?: user.email,
-                        profileImage = res?.profileImage ?: if (user.photoUrl != null) user.photoUrl.toString() else "placeholder",
+                        profileImage = res?.profileImage
+                            ?: if (user.photoUrl != null) user.photoUrl.toString() else "placeholder",
                         habits = res?.habits
                     )
                     result.invoke(userData)

@@ -1,4 +1,4 @@
-package com.example.habittracker.utils
+package com.example.habittracker.shared.utils
 
 import java.text.SimpleDateFormat
 import java.util.Date

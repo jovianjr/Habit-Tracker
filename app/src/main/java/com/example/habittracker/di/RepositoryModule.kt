@@ -6,7 +6,6 @@ import com.example.habittracker.data.repository.HabitRepository
 import com.example.habittracker.data.repository.HabitRepositoryImp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.gson.Gson
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -22,9 +21,8 @@ object RepositoryModule {
     fun provideAuthRepository(
         auth: FirebaseAuth,
         firestore: FirebaseFirestore,
-        gson: Gson
     ): AuthRepository {
-        return AuthRepositoryImp(auth, firestore, gson)
+        return AuthRepositoryImp(auth, firestore)
     }
 
     @Provides
