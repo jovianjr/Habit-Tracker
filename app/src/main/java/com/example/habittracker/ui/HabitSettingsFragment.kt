@@ -1,29 +1,137 @@
 package com.example.habittracker.ui
 
+import android.graphics.Canvas
+import android.graphics.Color
+import android.graphics.Paint
+import android.graphics.Typeface
+import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
+import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.habittracker.R
+import com.example.habittracker.adapter.HabitAdapter
 import com.example.habittracker.databinding.FragmentHabitSettingsBinding
 
 class HabitSettingsFragment : Fragment() {
-    private lateinit var myHabitsOriginal: List<String>
+    private var myHabits: MutableList<String> = mutableListOf()
+    private var myHabitsOriginal: MutableList<String> = mutableListOf()
     private lateinit var binding: FragmentHabitSettingsBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        myHabitsOriginal = arguments?.getStringArrayList("myHabits") ?: emptyList()
+        myHabitsOriginal.addAll(arguments?.getStringArrayList("myHabits") ?: emptyList())
+        myHabits.addAll(myHabitsOriginal)
         binding = FragmentHabitSettingsBinding.inflate(layoutInflater)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val adapter = HabitAdapter(myHabits)
+        binding.rvHabitList.layoutManager = LinearLayoutManager(activity)
+        binding.rvHabitList.adapter = adapter
+
+        ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
+            private val background: GradientDrawable = GradientDrawable().apply {
+                setColor(resources.getColor(R.color.danger, null))
+                cornerRadius = 24f
+                cornerRadii = floatArrayOf(0f, 0f, 16f, 16f, 16f, 16f, 0f, 0f)
+            }
+            private val deleteIcon =
+                ResourcesCompat.getDrawable(resources, R.drawable.ic_delete, null)
+
+            private val textPaint = Paint().apply {
+                color = Color.WHITE
+                textSize = 40f
+                isAntiAlias = true
+                typeface = ResourcesCompat.getFont(context!!, R.font.poppins_medium) ?: Typeface.DEFAULT
+            }
+
+            override fun onMove(
+                v: RecyclerView,
+                h: RecyclerView.ViewHolder,
+                t: RecyclerView.ViewHolder
+            ) = false
+
+            override fun onSwiped(h: RecyclerView.ViewHolder, dir: Int) {
+                val habitIdx: Int = h.bindingAdapterPosition
+                myHabits.removeAt(habitIdx)
+                binding.rvHabitList.adapter!!.notifyItemRemoved(habitIdx)
+                binding.rvHabitList.adapter!!.notifyItemRangeChanged(
+                    habitIdx,
+                    myHabits.size
+                )
+
+            }
+
+            override fun onChildDraw(
+                c: Canvas, recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder,
+                dX: Float, dY: Float, actionState: Int, isCurrentlyActive: Boolean
+            ) {
+                super.onChildDraw(
+                    c,
+                    recyclerView,
+                    viewHolder,
+                    dX,
+                    dY,
+                    actionState,
+                    isCurrentlyActive
+                )
+                if (dX < 0) {
+                    val itemView = viewHolder.itemView
+                    // Draw background
+                    background.setBounds(
+                        itemView.right + dX.toInt(),
+                        itemView.top,
+                        itemView.right,
+                        itemView.bottom
+                    )
+                    background.draw(c)
+                    // Draw icon
+                    val metrics = resources.displayMetrics
+                    val iconSize = (16 * metrics.density).toInt()
+                    val iconMargin = (itemView.height - iconSize) / 2
+                    deleteIcon!!.setBounds(
+                        itemView.right - iconMargin - iconSize,
+                        itemView.top + iconMargin,
+                        itemView.right - iconMargin,
+                        itemView.bottom - iconMargin
+                    )
+                    deleteIcon.setTint(Color.WHITE)
+                    deleteIcon.draw(c)
+                    // Draw text
+                    val text = "Delete"
+                    val textMargin = 32f
+                    val textWidth = textPaint.measureText(text)
+                    val textHeight = textPaint.textSize
+                    val textX = itemView.right - iconMargin - iconSize - textMargin - textWidth
+                    val textY = itemView.top + (itemView.height - textHeight) / 2 + textHeight
+                    c.drawText(text, textX, textY, textPaint)
+                }
+            }
+        }).attachToRecyclerView(binding.rvHabitList)
+
+        binding.tilAddHabit.editText?.setOnEditorActionListener { _, actionId, _ ->
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
+                val newHabit: String = binding.tilAddHabit.editText!!.text.toString()
+                myHabits.add(newHabit)
+                binding.rvHabitList.adapter!!.notifyItemInserted(myHabits.size)
+                binding.tilAddHabit.editText!!.clearFocus()
+                binding.tilAddHabit.editText!!.text = null
+            }
+            return@setOnEditorActionListener false
+        }
 
         binding.ivBack.setOnClickListener {
             if (myHabitsOriginal.isEmpty()) {

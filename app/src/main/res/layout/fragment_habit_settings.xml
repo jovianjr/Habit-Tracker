@@ -55,22 +55,29 @@
                 tools:itemCount="3"
                 tools:listitem="@layout/rv_habit_card" />
 
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_add_habit"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_add_habit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/rv_habit_list"
-                android:backgroundTint="#F7F7F7"
-                android:fontFamily="@font/poppins_regular"
-                android:insetTop="0dp"
-                android:insetBottom="0dp"
-                android:outlineProvider="none"
-                android:text="@string/add_new_habit"
-                android:textAlignment="textStart"
-                android:textColor="@color/primary"
-                android:textSize="14sp"
-                app:rippleColor="#E9E9E9" />
+                app:boxBackgroundMode="outline"
+                app:boxStrokeColor="@color/edit_text_stroke_add_new_habit"
+                app:hintEnabled="false">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    style="@style/text_body"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/neutral"
+                    android:fontFamily="@font/poppins_regular"
+                    android:hint="@string/add_new_habit"
+                    android:maxLines="1"
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="12dp"
+                    android:inputType="text"
+                    android:imeOptions="actionDone"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
         </RelativeLayout>
 
         <Space
