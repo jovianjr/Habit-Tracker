@@ -67,4 +67,15 @@
     <string name="complete_the_habit">Complete the Habit</string>
     <string name="complete_the_habit_description">You\'re about to mark the habit as complete.</string>
     <string name="caution_this_action_cannot_be_undone">This action cannot be undone.</string>
+    <string name="placeholder_note_no_self">Move your body, even if it’s just for 10 minutes to get your energy flowing.</string>
+    <string name="edit_profile_title">Edit Your Profile</string>
+    <string name="edit_profile_description">Let’s update your profile to make it even more awesome and up-to-date.</string>
+    <string name="label_note_to_self">Note to Self</string>
+    <string name="label_note_to_self_description">Write a quick note or reminder, like a goal, quote, or something to revisit later.</string>
+    <string name="label_name_description">It doesn’t have to be your full or real name—choose what feels right!</string>
+    <string name="note_to_self_placeholder">Reminder to myself</string>
+    <string name="save_profile">Save Profile</string>
+    <string name="select_profile_image">Select Profile Image</string>
+    <string name="select_profile_image_description">Pick a photo that represents you best</string>
+    <string name="profile_image">Profile Image</string>
 </resources>

@@ -38,4 +38,12 @@ class AuthViewModel @Inject constructor(
     fun logout(result: () -> Unit) {
         repository.logout(result)
     }
+
+    fun updateUser(user: User, result: (Boolean) -> Unit) {
+        repository.updateUser(user, result)
+    }
+
+    fun getUser(result: (User?) -> Unit) {
+        repository.getUser(result)
+    }
 }

@@ -16,6 +16,7 @@ import com.example.habittracker.adapter.HabitAdapter
 import com.example.habittracker.adapter.HabitCompletedAdapter
 import com.example.habittracker.data.model.Habit
 import com.example.habittracker.databinding.FragmentDashboardBinding
+import com.example.habittracker.shared.utils.ProfileImageListConstants
 import com.example.habittracker.shared.utils.UiState
 import com.example.habittracker.shared.utils.formatDate
 import com.example.habittracker.viewmodel.AuthViewModel
@@ -71,6 +72,11 @@ class DashboardFragment : Fragment() {
             } else {
                 habitViewModel.getHabitsToday()
             }
+            // set profile image
+            val profileImageId = ProfileImageListConstants.images[it?.profileImage]
+                ?: ProfileImageListConstants.images["default"]
+            if (profileImageId != null)
+                binding.ivProfileImage.setImageResource(profileImageId)
         }
     }
 

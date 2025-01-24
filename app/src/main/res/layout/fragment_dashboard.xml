@@ -27,7 +27,7 @@
                 android:layout_height="52dp"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
-                android:src="@drawable/img_profile_placeholder"
+                android:src="@drawable/img_photo_profile_placeholder"
                 app:shapeAppearance="@style/circleImageView" />
 
             <TextView
@@ -174,6 +174,7 @@
                         android:id="@+id/rv_data_completed"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:contentDescription="@string/completed_habits_today"
                         android:paddingHorizontal="16dp"
                         android:paddingTop="12dp"
                         tools:itemCount="1"
