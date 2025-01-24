@@ -24,7 +24,11 @@ class HabitViewModel @Inject constructor(
         }
     }
 
-    fun storeCompleteHabit(habits: List<Habit>, result: (Boolean) -> Unit) {
-        repository.storeCompleteHabit(habits, result)
+    fun storeHabits(newHabits: List<String>, result: (Boolean) -> Unit) {
+        repository.storeHabits(newHabits, result)
+    }
+
+    fun storeCompleteHabit(newCompletedHabits: List<Habit>, result: (Boolean) -> Unit) {
+        repository.storeCompleteHabit(newCompletedHabits, result)
     }
 }

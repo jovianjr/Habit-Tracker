@@ -42,12 +42,29 @@ class HabitRepositoryImp(
             }
     }
 
-    override fun storeCompleteHabit(habits: List<Habit>, result: (Boolean) -> Unit) {
+    override fun storeHabits(newHabits: List<String>, result: (Boolean) -> Unit) {
+        val docData = hashMapOf(
+            "habits" to newHabits,
+        )
+
+        firestore
+            .collection(FireStoreCollection.HABITS)
+            .document(auth.uid.toString())
+            .set(docData, SetOptions.mergeFields("habits"))
+            .addOnSuccessListener {
+                result.invoke(true)
+            }
+            .addOnFailureListener {
+                result.invoke(false)
+            }
+    }
+
+    override fun storeCompleteHabit(newCompletedHabits: List<Habit>, result: (Boolean) -> Unit) {
         val today = formatDate(Calendar.getInstance().time, "YYYY-MM-DD")
         val currentTimestamp = Timestamp(Date())
 
         val docData = hashMapOf(
-            "data" to habits,
+            "data" to newCompletedHabits,
             "updatedAt" to currentTimestamp,
         )
 

@@ -1,26 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
     android:paddingHorizontal="24dp"
     android:paddingVertical="32dp">
 
-    <ImageView
-        android:id="@+id/iv_back"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="16dp"
+    <ImageButton
+        android:id="@+id/ib_back"
+        android:layout_width="wrap_content"
+        android:layout_height="72dp"
+        android:backgroundTint="@android:color/transparent"
+        android:clickable="true"
         android:contentDescription="@string/button_back"
-        android:src="@drawable/ic_chevron_left" />
+        android:focusable="true"
+        android:minWidth="48dp"
+        android:scaleType="fitStart"
+        android:src="@drawable/ic_chevron_left"
+        tools:ignore="DuplicateSpeakableTextCheck" />
 
     <TextView
         android:id="@+id/tv_login_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/iv_back"
+        android:layout_below="@+id/ib_back"
         android:layout_marginTop="32dp"
         android:fontFamily="@font/poppins_bold"
         android:text="@string/login_title"
@@ -42,7 +47,8 @@
             android:autofillHints="emailAddress"
             android:hint="@string/email_placeholder"
             android:inputType="textEmailAddress"
-            android:maxLines="1" />
+            android:maxLines="1"
+            tools:ignore="VisualLintTextFieldSize" />
     </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -62,7 +68,8 @@
             style="@style/edit_text_primary"
             android:autofillHints="password"
             android:hint="@string/password_placeholder"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            tools:ignore="VisualLintTextFieldSize" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
@@ -70,15 +77,18 @@
         style="@style/button_primary"
         android:layout_below="@+id/til_password"
         android:layout_marginTop="32dp"
-        android:text="@string/log_in" />
+        android:text="@string/log_in"
+        tools:ignore="VisualLintButtonSize" />
 
     <TextView
         style="@style/text_label"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:clickable="true"
+        android:minHeight="48dp"
         android:text="@string/register_dont_have_an_account"
         android:textAlignment="center" />
 

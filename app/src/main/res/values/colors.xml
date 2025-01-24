@@ -8,6 +8,6 @@
     <color name="primary_placeholder">#FF745C5A</color>
     <color name="danger">#FFE11D48</color>
     <color name="danger_ripple">#FFC0C0</color>
-    <color name="button_disabled">#FF9CA3AF</color>
+    <color name="button_disabled">#9E817E</color>
     <color name="neutral">#D1D1D1</color>
 </resources>

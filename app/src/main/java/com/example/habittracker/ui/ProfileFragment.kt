@@ -28,7 +28,7 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.ivBack.setOnClickListener{
+        binding.ibBack.setOnClickListener{
                 findNavController().navigate(R.id.action_profileFragment_to_dashboardFragment_navigation)
         }
 

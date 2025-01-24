@@ -5,7 +5,7 @@
     <string name="log_in">Log In</string>
     <string name="register">Register</string>
     <string name="login_title">Welcome Back, Habit Hero!</string>
-    <string name="button_back">Button Back</string>
+    <string name="button_back">Back</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="email_placeholder">Enter your email address</string>

@@ -1,21 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
     android:paddingHorizontal="24dp"
     android:paddingVertical="32dp">
 
-    <ImageView
-        android:id="@+id/iv_back"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="16dp"
+    <ImageButton
+        android:id="@+id/ib_back"
+        android:layout_width="wrap_content"
+        android:layout_height="72dp"
+        android:backgroundTint="@android:color/transparent"
+        android:clickable="true"
         android:contentDescription="@string/button_back"
-        android:src="@drawable/ic_chevron_left" />
+        android:focusable="true"
+        android:minWidth="48dp"
+        android:scaleType="fitStart"
+        android:src="@drawable/ic_chevron_left"
+        tools:ignore="DuplicateSpeakableTextCheck" />
 
     <ImageView
         android:id="@+id/iv_edit_profile"
@@ -32,7 +36,7 @@
         style="@style/text_heading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/iv_back"
+        android:layout_below="@id/ib_back"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="24dp"
         android:text="@string/my_profile" />

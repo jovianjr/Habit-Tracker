@@ -32,7 +32,7 @@ class LoginFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         observer()
 
-        binding.ivBack.setOnClickListener {
+        binding.ibBack.setOnClickListener {
             findNavController().navigateUp()
         }
 

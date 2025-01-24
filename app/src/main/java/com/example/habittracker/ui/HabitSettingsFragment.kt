@@ -1,5 +1,6 @@
 package com.example.habittracker.ui
 
+import android.app.AlertDialog
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
@@ -12,6 +13,7 @@ import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -19,8 +21,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.habittracker.R
 import com.example.habittracker.adapter.HabitAdapter
 import com.example.habittracker.databinding.FragmentHabitSettingsBinding
+import com.example.habittracker.viewmodel.HabitViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class HabitSettingsFragment : Fragment() {
+    private val habitViewModel: HabitViewModel by viewModels()
     private var myHabits: MutableList<String> = mutableListOf()
     private var myHabitsOriginal: MutableList<String> = mutableListOf()
     private lateinit var binding: FragmentHabitSettingsBinding
@@ -42,6 +48,7 @@ class HabitSettingsFragment : Fragment() {
         binding.rvHabitList.layoutManager = LinearLayoutManager(activity)
         binding.rvHabitList.adapter = adapter
 
+        // Delete habit handler (onSwipe)
         ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
             private val background: GradientDrawable = GradientDrawable().apply {
                 setColor(resources.getColor(R.color.danger, null))
@@ -55,7 +62,8 @@ class HabitSettingsFragment : Fragment() {
                 color = Color.WHITE
                 textSize = 40f
                 isAntiAlias = true
-                typeface = ResourcesCompat.getFont(context!!, R.font.poppins_medium) ?: Typeface.DEFAULT
+                typeface =
+                    ResourcesCompat.getFont(context!!, R.font.poppins_medium) ?: Typeface.DEFAULT
             }
 
             override fun onMove(
@@ -122,6 +130,7 @@ class HabitSettingsFragment : Fragment() {
             }
         }).attachToRecyclerView(binding.rvHabitList)
 
+        // Add habit handler
         binding.tilAddHabit.editText?.setOnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_DONE) {
                 val newHabit: String = binding.tilAddHabit.editText!!.text.toString()
@@ -133,7 +142,28 @@ class HabitSettingsFragment : Fragment() {
             return@setOnEditorActionListener false
         }
 
-        binding.ivBack.setOnClickListener {
+        // Save habit handler
+        binding.btnSaveHabit.setOnClickListener {
+            binding.btnSaveHabit.isEnabled = false
+            binding.btnSaveHabit.icon =
+                ResourcesCompat.getDrawable(resources, R.drawable.ic_delete, null)
+            habitViewModel.storeHabits(myHabits) { success ->
+                binding.btnSaveHabit.isEnabled = true
+                if (success) {
+                    findNavController().navigateUp()
+                } else {
+                    val builder = AlertDialog.Builder(activity)
+                    builder.setTitle("Save Changes Failed")
+                    builder.setMessage("Something went wrong. Please try again later.")
+                    builder.setPositiveButton("OK", null)
+                    val dialog = builder.create()
+                    dialog.show()
+                }
+            }
+        }
+
+        // Button back
+        binding.ibBack.setOnClickListener {
             if (myHabitsOriginal.isEmpty()) {
                 findNavController().navigate(R.id.action_habitSettingsFragment_to_dashboardNoDataFragment_navigation)
             } else {
