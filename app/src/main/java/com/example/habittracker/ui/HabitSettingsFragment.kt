@@ -144,13 +144,12 @@ class HabitSettingsFragment : Fragment() {
 
         // Save habit handler
         binding.btnSaveHabit.setOnClickListener {
+            if(myHabits.isEmpty()) return@setOnClickListener
             binding.btnSaveHabit.isEnabled = false
-            binding.btnSaveHabit.icon =
-                ResourcesCompat.getDrawable(resources, R.drawable.ic_delete, null)
             habitViewModel.storeHabits(myHabits) { success ->
                 binding.btnSaveHabit.isEnabled = true
                 if (success) {
-                    findNavController().navigateUp()
+                    findNavController().navigate(R.id.action_habitSettingsFragment_to_dashboardFragment_navigation)
                 } else {
                     val builder = AlertDialog.Builder(activity)
                     builder.setTitle("Save Changes Failed")

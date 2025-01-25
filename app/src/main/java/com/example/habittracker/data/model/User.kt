@@ -7,4 +7,5 @@ data class User(
     var profileImage: String? = "",
     var noteToSelf: String? = "",
     var habits: List<String>? = emptyList(),
+    var password: String? = "",
 )

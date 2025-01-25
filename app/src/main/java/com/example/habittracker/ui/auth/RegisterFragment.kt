@@ -1,5 +1,6 @@
 package com.example.habittracker.ui.auth
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -11,19 +12,23 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.habittracker.R
 import com.example.habittracker.adapter.StepAdapter
+import com.example.habittracker.data.model.User
 import com.example.habittracker.databinding.FragmentAuthRegisterBinding
 import com.example.habittracker.shared.utils.RegisterStepConstants
 import com.example.habittracker.shared.utils.Validator
+import com.example.habittracker.viewmodel.AuthViewModel
 import com.google.android.material.textfield.TextInputLayout
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class RegisterFragment : Fragment() {
     private lateinit var binding: FragmentAuthRegisterBinding
+    private val authViewModel: AuthViewModel by viewModels()
     private val registerStep = RegisterStepConstants.steps
 
     override fun onCreateView(
@@ -48,7 +53,6 @@ class RegisterFragment : Fragment() {
         validateFieldListener(binding.layoutStep1.tilEmail)
         validateFieldListener(binding.layoutStep1.tilPassword) { validateConfirmPassword() }
         validateFieldListener(binding.layoutStep1.tilConfirmPassword) { validateConfirmPassword() }
-
 
         // CheckBox Handler
         binding.layoutStep2.tvAgreeTos.setOnClickListener {
@@ -76,7 +80,27 @@ class RegisterFragment : Fragment() {
                 binding.btnNextStep.isEnabled = false
                 adapter.nextStep()
             } else if (adapter.currentStep == 2) {
-                findNavController().navigate(R.id.action_registerFragment_to_registerSuccessFragment_navigation)
+                val user = User(
+                    name = binding.layoutStep1.tilName.editText!!.text.toString(),
+                    email = binding.layoutStep1.tilEmail.editText!!.text.toString(),
+                    password = binding.layoutStep1.tilPassword.editText!!.text.toString(),
+                )
+                binding.btnNextStep.isEnabled = false
+                authViewModel.register(user) { success ->
+                    if (success) {
+                        findNavController().navigate(R.id.action_registerFragment_to_registerSuccessFragment_navigation)
+                    } else {
+                        val builder = AlertDialog.Builder(activity)
+                        builder.setTitle("Register Failed")
+                        builder.setMessage("Something went wrong. Please try again later.")
+                        builder.setPositiveButton("OK", null)
+
+                        val dialog = builder.create()
+                        dialog.show()
+                    }
+                    binding.btnNextStep.icon = null
+                    binding.btnNextStep.isEnabled = true
+                }
             }
         }
 

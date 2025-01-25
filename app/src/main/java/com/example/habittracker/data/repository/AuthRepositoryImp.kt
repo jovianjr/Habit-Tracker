@@ -17,18 +17,15 @@ class AuthRepositoryImp(
     private val sharedPreferences: SharedPreferences,
 ) : AuthRepository {
     override fun loginEmailPassword(
-        email: String,
-        password: String,
-        result: (UiState<String>) -> Unit
+        email: String, password: String, result: (UiState<String>) -> Unit
     ) {
-        auth.signInWithEmailAndPassword(email, password)
-            .addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    result.invoke(UiState.Success("Login successfully"))
-                } else {
-                    result.invoke(UiState.Failure("Authentication failed"))
-                }
+        auth.signInWithEmailAndPassword(email, password).addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                result.invoke(UiState.Success("Login successfully"))
+            } else {
+                result.invoke(UiState.Failure("Authentication failed"))
             }
+        }
     }
 
     override fun logout(result: () -> Unit) {
@@ -36,15 +33,39 @@ class AuthRepositoryImp(
         result.invoke()
     }
 
+    override fun register(user: User, result: (Boolean) -> Unit) {
+        auth.createUserWithEmailAndPassword(user.email!!, user.password!!)
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    val docData = hashMapOf(
+                        "name" to user.name,
+                        "email" to user.email,
+                        "habits" to emptyList<String>(),
+                        "profileImage" to "default",
+                        "noteToSelf" to "Move your body, even if it’s just for 10 minutes to get your energy flowing.",
+                    )
+                    firestore.collection(FireStoreCollection.HABITS).document(auth.uid.toString())
+                        .set(docData).addOnSuccessListener {
+                            result.invoke(true)
+                            sharedPreferences.edit()
+                                .putString(SharedPrefConstants.USER_SESSION, gson.toJson(user))
+                                .apply()
+
+                        }.addOnFailureListener {
+                            result.invoke(false)
+                        }
+                } else {
+                    result.invoke(false)
+                }
+            }
+    }
+
     override fun session(result: (User?) -> Unit) {
         val user = auth.currentUser
         if (user == null) {
             result.invoke(null)
         } else {
-            firestore
-                .collection(FireStoreCollection.HABITS)
-                .document(user.uid)
-                .get()
+            firestore.collection(FireStoreCollection.HABITS).document(user.uid).get()
                 .addOnSuccessListener {
                     val res = it.toObject(User::class.java)
                     val userData = User(
@@ -59,8 +80,7 @@ class AuthRepositoryImp(
                     sharedPreferences.edit()
                         .putString(SharedPrefConstants.USER_SESSION, gson.toJson(userData)).apply()
                     result.invoke(userData)
-                }
-                .addOnFailureListener {
+                }.addOnFailureListener {
                     result.invoke(null)
                 }
 
@@ -84,17 +104,14 @@ class AuthRepositoryImp(
             "noteToSelf" to user.noteToSelf,
         )
 
-        firestore
-            .collection(FireStoreCollection.HABITS)
-            .document(auth.uid.toString())
+        firestore.collection(FireStoreCollection.HABITS).document(auth.uid.toString())
             .set(docData, SetOptions.mergeFields("profileImage", "name", "noteToSelf"))
             .addOnSuccessListener {
                 result.invoke(true)
                 sharedPreferences.edit()
                     .putString(SharedPrefConstants.USER_SESSION, gson.toJson(user)).apply()
 
-            }
-            .addOnFailureListener {
+            }.addOnFailureListener {
                 result.invoke(false)
             }
     }

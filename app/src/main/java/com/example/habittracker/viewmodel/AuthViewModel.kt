@@ -18,6 +18,10 @@ class AuthViewModel @Inject constructor(
     val login: LiveData<UiState<String>>
         get() = _login
 
+    fun getUser(result: (User?) -> Unit) {
+        repository.getUser(result)
+    }
+
     fun login(
         email: String,
         password: String
@@ -31,19 +35,19 @@ class AuthViewModel @Inject constructor(
         }
     }
 
-    fun session(result: (User?) -> Unit) {
-        repository.session(result)
-    }
-
     fun logout(result: () -> Unit) {
         repository.logout(result)
     }
 
-    fun updateUser(user: User, result: (Boolean) -> Unit) {
-        repository.updateUser(user, result)
+    fun register(user: User, result: (Boolean) -> Unit) {
+        repository.register(user, result)
     }
 
-    fun getUser(result: (User?) -> Unit) {
-        repository.getUser(result)
+    fun session(result: (User?) -> Unit) {
+        repository.session(result)
+    }
+
+    fun updateUser(user: User, result: (Boolean) -> Unit) {
+        repository.updateUser(user, result)
     }
 }
