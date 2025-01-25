@@ -61,7 +61,7 @@
 
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_next_step"
+        android:id="@+id/btn_start"
         style="@style/button_primary"
         android:layout_alignParentBottom="true"
         android:text="@string/kickstart_your_habits" />

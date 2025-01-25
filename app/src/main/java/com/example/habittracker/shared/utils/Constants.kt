@@ -1,6 +1,7 @@
 package com.example.habittracker.shared.utils
 
 import com.example.habittracker.R
+import com.example.habittracker.data.model.RegisterStep
 
 object FireStoreCollection {
     const val HABITS = "habits"
@@ -22,5 +23,13 @@ object ProfileImageListConstants {
         "img_photo_profile_5" to R.drawable.img_photo_profile_5,
         "img_photo_profile_7" to R.drawable.img_photo_profile_7,
         "img_photo_profile_8" to R.drawable.img_photo_profile_8,
+    )
+}
+
+object RegisterStepConstants {
+    val steps = listOf(
+        RegisterStep(1, "Complete Your Info"),
+        RegisterStep(2, "Terms & Conditions"),
+        RegisterStep(3, "You’re All Set!"),
     )
 }

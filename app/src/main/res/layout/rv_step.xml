@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:paddingEnd="16dp">
+
+    <TextView
+        android:id="@+id/tv_counter"
+        style="@style/text_label_strong"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:background="@drawable/step_inactive"
+        android:gravity="center"
+        android:text="@string/_1"
+        android:textAlignment="center"
+        android:textColor="@color/primary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_name"
+        style="@style/text_label_strong"
+        android:layout_marginStart="8dp"
+        android:ellipsize="end"
+        android:maxWidth="80dp"
+        android:text="@string/form"
+        android:textAlignment="textStart"
+        android:textColor="@color/primary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tv_counter"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/tv_next_indicator"
+        style="@style/text_label_strong"
+        android:layout_marginStart="8dp"
+        android:text="@string/step_divider"
+        android:textColor="@color/primary"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tv_name"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

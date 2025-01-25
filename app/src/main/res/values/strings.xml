@@ -14,7 +14,7 @@
     <string name="register_heading">Join the Habit Squad!</string>
     <string name="register_subheading">Your journey to better habits begins here</string>
     <string name="label_name">Name</string>
-    <string name="label_email">Email</string>
+    <string name="label_email">Email Address</string>
     <string name="label_password">Password</string>
     <string name="label_confirm_password">Confirm Password</string>
     <string name="register_password_placeholder">Create a password</string>
@@ -39,8 +39,8 @@
     <string name="my_profile">My Profile</string>
     <string name="log_out">Log out</string>
     <string name="app_version">Habit Tracker v0.0.1</string>
-    <string name="dummy_email">johndoe@gmail.com</string>
-    <string name="dummy_name">John Doe</string>
+    <string name="placeholder_email">johndoe@gmail.com</string>
+    <string name="placeholder_name">John Doe</string>
     <string name="today">Today</string>
     <string name="today_placeholder">Wednesday, 16 February 2020</string>
     <string name="your_progress_today">Your Progress Today</string>
@@ -78,4 +78,6 @@
     <string name="select_profile_image">Select Profile Image</string>
     <string name="select_profile_image_description">Pick a photo that represents you best</string>
     <string name="profile_image">Profile Image</string>
+    <string name="step">Step</string>
+    <string name="submit">Submit</string>
 </resources>

@@ -42,7 +42,18 @@
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
-        android:name="com.example.habittracker.ui.auth.RegisterFragment" />
+        android:name="com.example.habittracker.ui.auth.RegisterFragment">
+        <action
+            android:id="@+id/action_registerFragment_to_registerSuccessFragment_navigation"
+            app:destination="@id/registerSuccessFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerSuccessFragment"
+        android:name="com.example.habittracker.ui.auth.RegisterSuccessFragment">
+        <action
+            android:id="@+id/action_registerSuccessFragment_to_dashboardFragment_navigation"
+            app:destination="@id/dashboardFragment" />
+    </fragment>
     <fragment
         android:id="@+id/dashboardFragment"
         android:name="com.example.habittracker.ui.dashboard.DashboardFragment">

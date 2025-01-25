@@ -1,298 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    android:paddingHorizontal="24dp"
-    android:paddingVertical="32dp">
-
-    <ImageButton
-        android:id="@+id/ib_back"
-        android:layout_width="wrap_content"
-        android:layout_height="72dp"
-        android:backgroundTint="@android:color/transparent"
-        android:clickable="true"
-        android:contentDescription="@string/button_back"
-        android:focusable="true"
-        android:minWidth="48dp"
-        android:scaleType="fitStart"
-        android:src="@drawable/ic_chevron_left"
-        tools:ignore="DuplicateSpeakableTextCheck" />
-
-    <TextView
-        android:id="@+id/tv_register_heading"
-        style="@style/text_heading"
-        android:layout_below="@+id/ib_back"
-        android:layout_marginTop="24dp"
-        android:text="@string/register_heading" />
-
-    <TextView
-        android:id="@+id/tv_register_subheading"
-        style="@style/text_sub_heading"
-        android:layout_below="@+id/tv_register_heading"
-        android:text="@string/register_subheading" />
+    android:fillViewport="true">
 
     <LinearLayout
-        android:id="@+id/rl_step_summary"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/tv_register_subheading"
-        android:layout_marginTop="32dp"
-        android:gravity="center"
-        android:orientation="horizontal">
+        android:background="@color/white"
+        android:fillViewport="true"
+        android:orientation="vertical"
+        android:paddingHorizontal="24dp"
+        android:paddingVertical="32dp">
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/tv_step_summary_one_counter"
-                style="@style/text_label_strong"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:background="@drawable/step_active"
-                android:gravity="center"
-                android:text="@string/_1"
-                android:textAlignment="center"
-                android:textColor="@color/white" />
-
-            <Space
-                android:layout_width="8dp"
-                android:layout_height="match_parent" />
-
-            <TextView
-                android:id="@+id/tv_step_summary_one"
-                style="@style/text_label_strong"
-                android:gravity="center"
-                android:text="@string/form"
-                android:textColor="@color/secondary" />
-
-        </LinearLayout>
-
-        <Space
-            android:layout_width="8dp"
-            android:layout_height="match_parent" />
-
-        <TextView
-            android:id="@+id/tv_step_summary_two_divider"
-            style="@style/text_label_strong"
-            android:text="@string/step_divider"
-            android:textColor="@color/primary"
-            android:textSize="20sp" />
-
-        <Space
-            android:layout_width="12dp"
-            android:layout_height="match_parent" />
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="top"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="horizontal">
+            <ImageButton
+                android:id="@+id/ib_back"
+                android:layout_width="wrap_content"
+                android:layout_height="72dp"
+                android:backgroundTint="@android:color/transparent"
+                android:clickable="true"
+                android:contentDescription="@string/button_back"
+                android:focusable="true"
+                android:minWidth="48dp"
+                android:scaleType="fitStart"
+                android:src="@drawable/ic_chevron_left"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="DuplicateSpeakableTextCheck" />
 
             <TextView
-                android:id="@+id/tv_step_summary_two_counter"
-                style="@style/text_label_strong"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:background="@drawable/step_inactive"
-                android:gravity="center"
-                android:text="@string/_2"
-                android:textAlignment="center"
-                android:textColor="@color/primary" />
-
-            <Space
-                android:layout_width="8dp"
-                android:layout_height="match_parent" />
+                android:id="@+id/tv_register_heading"
+                style="@style/text_heading"
+                android:layout_below="@+id/ib_back"
+                android:layout_marginTop="24dp"
+                android:text="@string/register_heading"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ib_back" />
 
             <TextView
-                android:id="@+id/tv_step_summary_two"
-                style="@style/text_label_strong"
+                android:id="@+id/tv_register_subheading"
+                style="@style/text_sub_heading"
+                android:layout_below="@+id/tv_register_heading"
+                android:text="@string/register_subheading"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_register_heading" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_step"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/terms_amp_condition" />
+                android:layout_marginTop="32dp"
+                android:layout_marginBottom="24dp"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintBottom_toTopOf="@id/ll_step_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_register_subheading"
+                tools:itemCount="5"
+                tools:listitem="@layout/rv_step" />
 
-        </LinearLayout>
-
-        <Space
-            android:layout_width="8dp"
-            android:layout_height="match_parent" />
-
-        <TextView
-            android:id="@+id/tv_step_summary_three_divider"
-            style="@style/text_label_strong"
-            android:text="@string/step_divider"
-            android:textColor="@color/primary"
-            android:textSize="20sp" />
-
-        <Space
-            android:layout_width="12dp"
-            android:layout_height="match_parent" />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/tv_step_summary_three_counter"
-                style="@style/text_label_strong"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:background="@drawable/step_inactive"
-                android:gravity="center"
-                android:text="@string/_3"
-                android:textAlignment="center"
-                android:textColor="@color/primary" />
-
-            <Space
-                android:layout_width="8dp"
-                android:layout_height="match_parent" />
-
-            <TextView
-                android:id="@+id/tv_step_summary_three"
-                style="@style/text_label_strong"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:id="@+id/ll_step_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/done" />
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rv_step">
 
-        </LinearLayout>
+                <include
+                    android:id="@+id/layout_step_1"
+                    layout="@layout/fragment_auth_register_step_1" />
+
+                <include
+                    android:id="@+id/layout_step_2"
+                    layout="@layout/fragment_auth_register_step_2" />
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_next_step"
+            style="@style/button_primary"
+            android:layout_marginTop="16dp"
+            android:text="@string/next_step"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ll_step_content" />
     </LinearLayout>
-
-    <RelativeLayout
-        android:id="@+id/rl_step_one"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/btn_next_step"
-        android:layout_below="@id/rl_step_summary"
-        android:layout_marginTop="24dp"
-        android:visibility="visible">
-
-        <TextView
-            android:id="@+id/tv_label_name"
-            style="@style/text_label_strong"
-            android:text="@string/label_name" />
-
-        <EditText
-            android:id="@+id/et_name"
-            style="@style/edit_text_primary"
-            android:layout_below="@id/tv_label_name"
-            android:layout_marginTop="8dp"
-            android:autofillHints="name"
-            android:hint="@string/name_placeholder"
-            android:inputType="text" />
-
-        <TextView
-            android:id="@+id/tv_label_email"
-            style="@style/text_label_strong"
-            android:layout_below="@id/et_name"
-            android:layout_marginTop="24dp"
-            android:text="@string/label_email" />
-
-        <EditText
-            android:id="@+id/et_email"
-            style="@style/edit_text_primary"
-            android:layout_below="@id/tv_label_email"
-            android:layout_marginTop="8dp"
-            android:autofillHints="emailAddress"
-            android:hint="@string/email_placeholder"
-            android:inputType="textEmailAddress" />
-
-        <TextView
-            android:id="@+id/tv_label_password"
-            style="@style/text_label_strong"
-            android:layout_below="@id/et_email"
-            android:layout_marginTop="24dp"
-            android:text="@string/label_password" />
-
-        <EditText
-            android:id="@+id/et_password"
-            style="@style/edit_text_primary"
-            android:layout_below="@id/tv_label_password"
-            android:layout_marginTop="8dp"
-            android:autofillHints="password"
-            android:hint="@string/register_password_placeholder"
-            android:inputType="textPassword" />
-
-        <TextView
-            android:id="@+id/tv_label_confirm_password"
-            style="@style/text_label_strong"
-            android:layout_below="@id/et_password"
-            android:layout_marginTop="24dp"
-            android:text="@string/label_confirm_password" />
-
-        <EditText
-            android:id="@+id/et_confirm_passowrd"
-            style="@style/edit_text_primary"
-            android:layout_below="@id/tv_label_confirm_password"
-            android:layout_marginTop="8dp"
-            android:autofillHints="password"
-            android:hint="@string/register_confirm_password_placeholder"
-            android:inputType="textPassword" />
-
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/rl_step_two"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@id/btn_next_step"
-        android:layout_below="@id/rl_step_summary"
-        android:layout_marginTop="24dp"
-        android:layout_marginBottom="12dp"
-        android:visibility="invisible">
-
-        <TextView
-            android:id="@+id/tv_tos"
-            style="@style/text_body_strong"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/terms_of_service_and_privacy_policy" />
-
-        <WebView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_above="@id/ll_agree_tos"
-            android:layout_below="@id/tv_tos"
-            android:layout_marginBottom="8dp"
-            android:background="@color/tertiary"
-            android:padding="8dp"
-            android:paddingVertical="12dp" />
-
-        <LinearLayout
-            android:id="@+id/ll_agree_tos"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <com.google.android.material.checkbox.MaterialCheckBox
-                android:id="@+id/cb_agree_tos"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <Space
-                android:layout_width="4dp"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:id="@+id/tv_agree_tos"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/i_have_read_and_agree_to_the_terms_of_service_and_privacy_policy" />
-        </LinearLayout>
-    </RelativeLayout>
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_next_step"
-        style="@style/button_primary"
-        android:layout_alignParentBottom="true"
-        android:layout_marginTop="16dp"
-        android:text="@string/next_step" />
-
-</RelativeLayout>
+</ScrollView>

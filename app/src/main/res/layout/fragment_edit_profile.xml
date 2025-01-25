@@ -17,7 +17,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <ImageButton
                 android:id="@+id/ib_back"
@@ -121,9 +121,9 @@
 
                     <EditText
                         style="@style/edit_text_primary"
-                        android:autofillHints="password"
+                        android:autofillHints="emailAddress"
                         android:hint="@string/name_placeholder"
-                        android:inputType="text"
+                        android:inputType="textEmailAddress"
                         tools:ignore="VisualLintTextFieldSize" />
                 </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
@@ -167,7 +167,7 @@
 
                     <EditText
                         style="@style/edit_text_primary"
-                        android:autofillHints="password"
+                        android:autofillHints="noteToSelf"
                         android:hint="@string/note_to_self_placeholder"
                         android:inputType="text"
                         tools:ignore="VisualLintTextFieldSize" />
