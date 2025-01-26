@@ -40,6 +40,8 @@ class EditProfileFragment : Fragment() {
         setProfileImage(user.profileImage)
 
         binding.btnSaveProfile.setOnClickListener {
+            binding.btnSaveProfile.isEnabled = false
+            binding.btnProgress.visibility = View.VISIBLE
             if (!binding.tilName.isErrorEnabled && !binding.tilNoteToSelf.isErrorEnabled) {
                 user.name = binding.tilName.editText?.text.toString()
                 user.noteToSelf = binding.tilNoteToSelf.editText?.text.toString()
@@ -55,6 +57,8 @@ class EditProfileFragment : Fragment() {
                         dialog.show()
                     }
                 }
+                binding.btnSaveProfile.isEnabled = true
+                binding.btnProgress.visibility = View.GONE
             }
         }
 

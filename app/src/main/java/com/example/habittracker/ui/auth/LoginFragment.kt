@@ -85,11 +85,15 @@ class LoginFragment : Fragment() {
                 is UiState.Loading -> {
                     binding.tilEmail.isEnabled = false
                     binding.tilPassword.isEnabled = false
+                    binding.btnLogin.isEnabled = false
+                    binding.btnProgress.visibility = View.VISIBLE
                 }
 
                 is UiState.Failure -> {
                     binding.tilEmail.isEnabled = true
                     binding.tilPassword.isEnabled = true
+                    binding.btnLogin.isEnabled = true
+                    binding.btnProgress.visibility = View.GONE
 
                     val builder = AlertDialog.Builder(activity)
                     builder.setTitle("Incorrect Credentials")
@@ -103,6 +107,8 @@ class LoginFragment : Fragment() {
                 is UiState.Success -> {
                     binding.tilEmail.isEnabled = true
                     binding.tilPassword.isEnabled = true
+                    binding.btnLogin.isEnabled = true
+                    binding.btnProgress.visibility = View.GONE
                     findNavController().navigate(R.id.action_loginFragment_to_dashboardFragment_navigation)
                 }
             }

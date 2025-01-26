@@ -146,8 +146,10 @@ class HabitSettingsFragment : Fragment() {
         binding.btnSaveHabit.setOnClickListener {
             if(myHabits.isEmpty()) return@setOnClickListener
             binding.btnSaveHabit.isEnabled = false
+            binding.btnProgress.visibility = View.VISIBLE
             habitViewModel.storeHabits(myHabits) { success ->
                 binding.btnSaveHabit.isEnabled = true
+                binding.btnProgress.visibility = View.GONE
                 if (success) {
                     findNavController().navigate(R.id.action_habitSettingsFragment_to_dashboardFragment_navigation)
                 } else {

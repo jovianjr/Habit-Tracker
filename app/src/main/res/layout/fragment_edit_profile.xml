@@ -183,12 +183,30 @@
             android:layout_weight="1" />
 
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_save_profile"
-            style="@style/button_primary"
-            android:layout_marginTop="32dp"
-            android:enabled="false"
-            android:text="@string/save_profile"
-            tools:ignore="VisualLintButtonSize" />
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_save_profile"
+                style="@style/button_primary"
+                android:enabled="false"
+                android:text="@string/save_profile"
+                tools:ignore="VisualLintButtonSize" />
+
+            <com.google.android.material.progressindicator.CircularProgressIndicator
+                android:id="@+id/btn_progress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="32dp"
+                android:indeterminate="true"
+                android:translationZ="2dp"
+                android:visibility="gone"
+                app:indicatorColor="@color/white"
+                app:indicatorSize="20dp"
+                app:trackThickness="4dp" />
+        </FrameLayout>
     </LinearLayout>
 </ScrollView>

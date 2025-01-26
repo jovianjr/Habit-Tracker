@@ -89,12 +89,29 @@
             android:layout_height="0dp"
             android:layout_weight="1" />
 
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp">
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_save_habit"
-            style="@style/button_primary"
-            android:layout_marginTop="40dp"
-            android:text="@string/save_changes"
-            tools:ignore="VisualLintButtonSize" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_save_habit"
+                style="@style/button_primary"
+                android:text="@string/save_changes"
+                tools:ignore="VisualLintButtonSize" />
+
+            <com.google.android.material.progressindicator.CircularProgressIndicator
+                android:id="@+id/btn_progress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="32dp"
+                android:indeterminate="true"
+                android:translationZ="2dp"
+                android:visibility="gone"
+                app:indicatorColor="@color/white"
+                app:indicatorSize="20dp"
+                app:trackThickness="4dp" />
+        </FrameLayout>
     </LinearLayout>
 </ScrollView>

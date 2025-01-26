@@ -26,7 +26,7 @@ class RegisterSuccessFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.btnStart.setOnClickListener {
-            findNavController().navigate(R.id.action_registerSuccessFragment_to_dashboardFragment_navigation)
+            findNavController().navigate(R.id.action_registerSuccessFragment_to_dashboardNoFragment_navigation)
         }
     }
 }

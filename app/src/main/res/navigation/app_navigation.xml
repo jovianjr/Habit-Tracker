@@ -51,8 +51,8 @@
         android:id="@+id/registerSuccessFragment"
         android:name="com.example.habittracker.ui.auth.RegisterSuccessFragment">
         <action
-            android:id="@+id/action_registerSuccessFragment_to_dashboardFragment_navigation"
-            app:destination="@id/dashboardFragment" />
+            android:id="@+id/action_registerSuccessFragment_to_dashboardNoFragment_navigation"
+            app:destination="@id/dashboardNoDataFragment" />
     </fragment>
     <fragment
         android:id="@+id/dashboardFragment"

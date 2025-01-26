@@ -86,6 +86,7 @@ class RegisterFragment : Fragment() {
                     password = binding.layoutStep1.tilPassword.editText!!.text.toString(),
                 )
                 binding.btnNextStep.isEnabled = false
+                binding.btnProgress.visibility = View.VISIBLE
                 authViewModel.register(user) { success ->
                     if (success) {
                         findNavController().navigate(R.id.action_registerFragment_to_registerSuccessFragment_navigation)
@@ -100,6 +101,7 @@ class RegisterFragment : Fragment() {
                     }
                     binding.btnNextStep.icon = null
                     binding.btnNextStep.isEnabled = true
+                    binding.btnProgress.visibility = View.GONE
                 }
             }
         }
