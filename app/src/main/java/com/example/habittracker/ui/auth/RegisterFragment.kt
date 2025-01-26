@@ -11,6 +11,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -91,8 +92,8 @@ class RegisterFragment : Fragment() {
             }
         }
 
-        // Back Handler
-        binding.ibBack.setOnClickListener {
+        // Handle Back
+        fun handleBack() {
             if (adapter.currentStep == 1) {
                 findNavController().navigateUp()
             } else if (adapter.currentStep == 2) {
@@ -104,6 +105,9 @@ class RegisterFragment : Fragment() {
                 binding.btnNextStep.isEnabled = true
             }
         }
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) { handleBack() }
+        binding.ibBack.setOnClickListener { handleBack() }
+
     }
 
 
@@ -123,7 +127,9 @@ class RegisterFragment : Fragment() {
 
                     val builder = AlertDialog.Builder(activity)
                     builder.setTitle("Registration Failed")
-                    builder.setMessage(state.error ?: "Something went wrong. Please try again later.")
+                    builder.setMessage(
+                        state.error ?: "Something went wrong. Please try again later."
+                    )
                     builder.setPositiveButton("OK", null)
 
                     val dialog = builder.create()

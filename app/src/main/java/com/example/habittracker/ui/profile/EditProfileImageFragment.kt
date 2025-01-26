@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResult
 import androidx.navigation.fragment.findNavController
@@ -44,8 +45,11 @@ class EditProfileImageFragment : Fragment() {
             findNavController().navigateUp()
         }
 
-        binding.ibBack.setOnClickListener {
+        // Handle Back
+        fun handleBack() {
             findNavController().navigate(R.id.action_editProfileImageFragment_to_editProfileFragment_navigation)
         }
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) { handleBack() }
+        binding.ibBack.setOnClickListener { handleBack() }
     }
 }

@@ -7,6 +7,7 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
@@ -79,10 +80,12 @@ class EditProfileFragment : Fragment() {
             )
         }
 
-        binding.ibBack.setOnClickListener {
+        // Handle Back
+        fun handleBack() {
             findNavController().navigate(R.id.action_editProfileFragment_to_profileFragment_navigation)
         }
-
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) { handleBack() }
+        binding.ibBack.setOnClickListener { handleBack() }
     }
 
     private fun getUser() {

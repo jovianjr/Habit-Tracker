@@ -24,7 +24,6 @@ class RegisterSuccessFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         binding.btnStart.setOnClickListener {
             findNavController().navigate(R.id.action_registerSuccessFragment_to_dashboardNoFragment_navigation)
         }

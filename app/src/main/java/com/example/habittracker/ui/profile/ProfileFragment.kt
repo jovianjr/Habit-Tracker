@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -30,9 +31,6 @@ class ProfileFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         getUser()
 
-        binding.ibBack.setOnClickListener {
-            findNavController().navigate(R.id.action_profileFragment_to_dashboardFragment_navigation)
-        }
 
         binding.ibEditProfile.setOnClickListener {
             findNavController().navigate(R.id.action_profileFragment_to_editProfileFragment_navigation)
@@ -43,6 +41,14 @@ class ProfileFragment : Fragment() {
                 findNavController().navigate(R.id.action_profileFragment_to_welcomeScreenFragment_navigation)
             }
         }
+
+        // Handle Back
+        fun handleBack() {
+            findNavController().navigate(R.id.action_profileFragment_to_dashboardFragment_navigation)
+        }
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) { handleBack() }
+        binding.ibBack.setOnClickListener { handleBack() }
+
     }
 
     private fun getUser() {

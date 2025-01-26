@@ -23,11 +23,7 @@ class MainActivity : AppCompatActivity() {
 
         onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
-                if (navController.currentDestination?.id == R.id.welcomeScreenFragment) {
-                    moveTaskToBack(true)
-                } else {
-                    onBackPressedDispatcher.onBackPressed()
-                }
+                moveTaskToBack(true)
             }
         })
     }

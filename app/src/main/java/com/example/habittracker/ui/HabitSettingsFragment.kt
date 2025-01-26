@@ -12,6 +12,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.BaseInputConnection
 import android.view.inputmethod.EditorInfo
+import androidx.activity.addCallback
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -169,13 +170,16 @@ class HabitSettingsFragment : Fragment() {
             }
         }
 
-        // Button back
-        binding.ibBack.setOnClickListener {
+
+        // Handle Back
+        fun handleBack() {
             if (myHabitsOriginal.isEmpty()) {
                 findNavController().navigate(R.id.action_habitSettingsFragment_to_dashboardNoDataFragment_navigation)
             } else {
                 findNavController().navigate(R.id.action_habitSettingsFragment_to_dashboardFragment_navigation)
             }
         }
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) { handleBack() }
+        binding.ibBack.setOnClickListener { handleBack() }
     }
 }
