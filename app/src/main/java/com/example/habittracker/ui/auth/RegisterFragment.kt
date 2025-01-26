@@ -117,13 +117,13 @@ class RegisterFragment : Fragment() {
                 }
 
                 is UiState.Failure -> {
-                    binding.btnNextStep.icon = null
+                    binding.ibBack.isEnabled = true
                     binding.btnNextStep.isEnabled = true
                     binding.btnProgress.visibility = View.GONE
 
                     val builder = AlertDialog.Builder(activity)
-                    builder.setTitle("Register Failed")
-                    builder.setMessage("Something went wrong. Please try again later.")
+                    builder.setTitle("Registration Failed")
+                    builder.setMessage(state.error ?: "Something went wrong. Please try again later.")
                     builder.setPositiveButton("OK", null)
 
                     val dialog = builder.create()

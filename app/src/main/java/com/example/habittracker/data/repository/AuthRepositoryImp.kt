@@ -65,7 +65,7 @@ class AuthRepositoryImp(
                             result.invoke(UiState.Failure("Account Data Save Failed"))
                         }
                 } else {
-                    result.invoke(UiState.Failure("Account Creation Failed"))
+                    result.invoke(UiState.Failure(task.exception?.message.toString()))
                 }
             }
     }
