@@ -10,6 +10,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.BaseInputConnection
 import android.view.inputmethod.EditorInfo
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
@@ -23,6 +24,7 @@ import com.example.habittracker.adapter.HabitAdapter
 import com.example.habittracker.databinding.FragmentHabitSettingsBinding
 import com.example.habittracker.viewmodel.HabitViewModel
 import dagger.hilt.android.AndroidEntryPoint
+
 
 @AndroidEntryPoint
 class HabitSettingsFragment : Fragment() {
@@ -145,6 +147,10 @@ class HabitSettingsFragment : Fragment() {
         // Save habit handler
         binding.btnSaveHabit.setOnClickListener {
             if(myHabits.isEmpty()) return@setOnClickListener
+            if(!binding.tilAddHabit.editText?.text.isNullOrBlank()){
+                val inputConnection = BaseInputConnection(binding.tilAddHabit, true)
+                inputConnection.performEditorAction(EditorInfo.IME_ACTION_DONE)
+            }
             binding.btnSaveHabit.isEnabled = false
             binding.btnProgress.visibility = View.VISIBLE
             habitViewModel.storeHabits(myHabits) { success ->
