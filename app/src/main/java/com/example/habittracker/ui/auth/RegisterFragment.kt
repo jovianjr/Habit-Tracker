@@ -20,6 +20,7 @@ import com.example.habittracker.adapter.StepAdapter
 import com.example.habittracker.data.model.User
 import com.example.habittracker.databinding.FragmentAuthRegisterBinding
 import com.example.habittracker.shared.utils.RegisterStepConstants
+import com.example.habittracker.shared.utils.UiState
 import com.example.habittracker.shared.utils.Validator
 import com.example.habittracker.viewmodel.AuthViewModel
 import com.google.android.material.textfield.TextInputLayout
@@ -41,6 +42,7 @@ class RegisterFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        observer()
 
         // Set Step Adapter
         val adapter = StepAdapter(registerStep)
@@ -85,24 +87,7 @@ class RegisterFragment : Fragment() {
                     email = binding.layoutStep1.tilEmail.editText!!.text.toString(),
                     password = binding.layoutStep1.tilPassword.editText!!.text.toString(),
                 )
-                binding.btnNextStep.isEnabled = false
-                binding.btnProgress.visibility = View.VISIBLE
-                authViewModel.register(user) { success ->
-                    if (success) {
-                        findNavController().navigate(R.id.action_registerFragment_to_registerSuccessFragment_navigation)
-                    } else {
-                        val builder = AlertDialog.Builder(activity)
-                        builder.setTitle("Register Failed")
-                        builder.setMessage("Something went wrong. Please try again later.")
-                        builder.setPositiveButton("OK", null)
-
-                        val dialog = builder.create()
-                        dialog.show()
-                    }
-                    binding.btnNextStep.icon = null
-                    binding.btnNextStep.isEnabled = true
-                    binding.btnProgress.visibility = View.GONE
-                }
+                authViewModel.register(user)
             }
         }
 
@@ -117,6 +102,37 @@ class RegisterFragment : Fragment() {
                 adapter.previousStep()
                 binding.rvStep.adapter?.notifyItemChanged(adapter.currentStep)
                 binding.btnNextStep.isEnabled = true
+            }
+        }
+    }
+
+
+    private fun observer() {
+        authViewModel.register.observe(viewLifecycleOwner) { state ->
+            when (state) {
+                is UiState.Loading -> {
+                    binding.ibBack.isEnabled = false
+                    binding.btnNextStep.isEnabled = false
+                    binding.btnProgress.visibility = View.VISIBLE
+                }
+
+                is UiState.Failure -> {
+                    binding.btnNextStep.icon = null
+                    binding.btnNextStep.isEnabled = true
+                    binding.btnProgress.visibility = View.GONE
+
+                    val builder = AlertDialog.Builder(activity)
+                    builder.setTitle("Register Failed")
+                    builder.setMessage("Something went wrong. Please try again later.")
+                    builder.setPositiveButton("OK", null)
+
+                    val dialog = builder.create()
+                    dialog.show()
+                }
+
+                is UiState.Success -> {
+                    findNavController().navigate(R.id.action_registerFragment_to_registerSuccessFragment_navigation)
+                }
             }
         }
     }

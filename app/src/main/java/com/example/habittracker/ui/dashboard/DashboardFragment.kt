@@ -48,7 +48,7 @@ class DashboardFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         observer()
-        checkSession()
+        authViewModel.session()
 
         binding.tvTodayValue.text = formatDate(Calendar.getInstance().time)
         binding.btnHabitSettings.setOnClickListener {
@@ -61,22 +61,6 @@ class DashboardFragment : Fragment() {
         }
         binding.ivProfileImage.setOnClickListener {
             findNavController().navigate(R.id.action_dashboardFragment_to_profileFragment_navigation)
-        }
-    }
-
-    private fun checkSession() {
-        authViewModel.session {
-            myHabits = it?.habits ?: emptyList()
-            if (myHabits.isEmpty()) {
-                findNavController().navigate(R.id.action_dashboardFragment_to_dashboardNoDataFragment_navigation)
-            } else {
-                habitViewModel.getHabitsToday()
-            }
-            // set profile image
-            val profileImageId = ProfileImageListConstants.images[it?.profileImage]
-                ?: ProfileImageListConstants.images["default"]
-            if (profileImageId != null)
-                binding.ivProfileImage.setImageResource(profileImageId)
         }
     }
 
@@ -192,6 +176,29 @@ class DashboardFragment : Fragment() {
 
                     // update progress ui
                     updateProgressUi()
+                }
+            }
+        }
+        authViewModel.session.observe(viewLifecycleOwner) { state ->
+            when (state) {
+                is UiState.Loading -> {
+                }
+
+                is UiState.Failure -> {
+                }
+
+                is UiState.Success -> {
+                    myHabits = state.data?.habits ?: emptyList()
+                    if (myHabits.isEmpty()) {
+                        findNavController().navigate(R.id.action_dashboardFragment_to_dashboardNoDataFragment_navigation)
+                    } else {
+                        habitViewModel.getHabitsToday()
+                    }
+                    // set profile image
+                    val profileImageId = ProfileImageListConstants.images[state.data?.profileImage]
+                        ?: ProfileImageListConstants.images["default"]
+                    if (profileImageId != null)
+                        binding.ivProfileImage.setImageResource(profileImageId)
                 }
             }
         }

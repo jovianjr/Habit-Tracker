@@ -113,6 +113,7 @@
                 android:layout_marginStart="32dp"
                 android:indeterminate="true"
                 android:translationZ="2dp"
+                android:visibility="gone"
                 app:indicatorColor="@color/white"
                 app:indicatorSize="20dp"
                 app:trackThickness="4dp" />
