@@ -95,7 +95,7 @@ class RegisterFragment : Fragment() {
         // Handle Back
         fun handleBack() {
             if (adapter.currentStep == 1) {
-                findNavController().navigateUp()
+                findNavController().navigate(R.id.action_registerFragment_to_welcomeScreenFragment_navigation)
             } else if (adapter.currentStep == 2) {
                 binding.layoutStep1.clStepOne.visibility = View.VISIBLE
                 binding.layoutStep2.clStepTwo.visibility = View.GONE

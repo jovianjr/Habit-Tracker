@@ -39,6 +39,9 @@
         <action
             android:id="@+id/action_loginFragment_to_dashboardFragment_navigation"
             app:destination="@id/dashboardFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_registerFragment_navigation"
+            app:destination="@id/registerFragment" />
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
@@ -46,6 +49,9 @@
         <action
             android:id="@+id/action_registerFragment_to_registerSuccessFragment_navigation"
             app:destination="@id/registerSuccessFragment" />
+        <action
+            android:id="@+id/action_registerFragment_to_welcomeScreenFragment_navigation"
+            app:destination="@id/welcomeScreenFragment" />
     </fragment>
     <fragment
         android:id="@+id/registerSuccessFragment"

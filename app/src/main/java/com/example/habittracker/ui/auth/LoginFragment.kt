@@ -53,6 +53,10 @@ class LoginFragment : Fragment() {
             }
         }
 
+        binding.tvRegister.setOnClickListener {
+            findNavController().navigate(R.id.action_loginFragment_to_registerFragment_navigation)
+        }
+
         // Handle Back
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
             findNavController().navigateUp()

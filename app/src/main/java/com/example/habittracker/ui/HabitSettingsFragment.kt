@@ -10,7 +10,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.BaseInputConnection
 import android.view.inputmethod.EditorInfo
 import androidx.activity.addCallback
 import androidx.core.content.res.ResourcesCompat
@@ -147,10 +146,13 @@ class HabitSettingsFragment : Fragment() {
 
         // Save habit handler
         binding.btnSaveHabit.setOnClickListener {
-            if(myHabits.isEmpty()) return@setOnClickListener
-            if(!binding.tilAddHabit.editText?.text.isNullOrBlank()){
-                val inputConnection = BaseInputConnection(binding.tilAddHabit, true)
-                inputConnection.performEditorAction(EditorInfo.IME_ACTION_DONE)
+            if (myHabits.isEmpty() && binding.tilAddHabit.editText?.text.isNullOrBlank()) return@setOnClickListener
+            if (!binding.tilAddHabit.editText?.text.isNullOrBlank()) {
+                val newHabit: String = binding.tilAddHabit.editText!!.text.toString()
+                myHabits.add(newHabit)
+                binding.rvHabitList.adapter!!.notifyItemInserted(myHabits.size)
+                binding.tilAddHabit.editText!!.clearFocus()
+                binding.tilAddHabit.editText!!.text = null
             }
             binding.btnSaveHabit.isEnabled = false
             binding.btnProgress.visibility = View.VISIBLE
